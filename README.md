@@ -1,4 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lumina
+
+Plataforma EAD em Next.js, TypeScript, Prisma e PostgreSQL.
+
+## Setup do projeto
+
+Copie `.env.example` para `.env`, ajuste `DATABASE_URL` e `SESSION_SECRET`, depois execute `npm install`, `npm run db:generate`, `npm run db:push`, `npm run db:seed` e `npm run dev`.
+
+## API implementada
+
+- `POST /api/auth/register`, `POST /api/auth/login`, `POST /api/auth/logout`
+- `GET /api/courses`, `GET /api/courses/:id`, `POST /api/courses`
+- `POST /api/courses/:id/enroll`, `GET /api/enrollments`
+- `POST /api/lessons/:id/progress`
+- `PUT/DELETE /api/modules/:id`, `PUT/DELETE /api/lessons/:id`
+- `GET /api/auth/me`, `GET /api/dashboard/student`
+- `GET /api/dashboard/teacher`
+
+As sessões usam cookie HttpOnly assinado. O schema em `prisma/schema.prisma` contempla módulos, aulas, materiais, avaliações, certificados, notificações e o futuro papel de administrador.
+
+## E-mail de recuperação
+
+O envio usa Nodemailer via SMTP. Configure `APP_URL`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASSWORD` e `SMTP_FROM` no `.env`. Em desenvolvimento, sem SMTP configurado, a API retorna um link temporário para teste local; em produção, o envio SMTP é obrigatório.
 
 ## Getting Started
 
